@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="projet_ear">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="gestioncabinet-util.jar" deploy-path="/" handle="module:/classpath/lib///salsa.univ-amu.fr/dfs/myhome_etud/DOSSIERS_WINDOWS/Bureau/projet_jee/tp1_JAR &amp; WAR/gestioncabinet-util.jar">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestioncabinet-api.jar" deploy-path="/lib" handle="module:/classpath/lib///salsa.univ-amu.fr/dfs/myhome_etud/DOSSIERS_WINDOWS/Bureau/projet_jee/tp1_JAR &amp; WAR/gestioncabinet-api.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
