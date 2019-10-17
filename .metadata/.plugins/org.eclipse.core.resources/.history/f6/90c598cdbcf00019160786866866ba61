@@ -1,0 +1,19 @@
+package tp1_SE;
+
+import com.novarem.jndi.ServiceLocator;
+import com.novarem.jndi.ServiceLocatorImpl;
+
+public class RecuperationEJB {
+
+	public static void main(String[] args) {
+		
+		
+		
+		Object monEjb;
+
+		ServiceLocator monServiceLocateur = ServiceLocatorImpl.getInstance();
+		
+		
+	}
+
+}

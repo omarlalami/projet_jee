@@ -1,0 +1,23 @@
+package tp1_SE;
+
+import com.novarem.jndi.ServiceLocator;
+import com.novarem.jndi.ServiceLocatorException;
+import com.novarem.jndi.ServiceLocatorImpl;
+
+public class RecuperationEJB {
+
+	public static void main(String[] args) {
+		
+
+		ServiceLocator monServiceLocateur = ServiceLocatorImpl.getInstance();
+		
+		try {
+			Object monEjb = monServiceLocateur.getRemoteInterface("ejb:adressejndi?stateful") ;
+		} catch (ServiceLocatorException e) {
+			System.out.println("OMAR ERREUR : lors de la recuperation de l'EJB ...");
+			e.printStackTrace();
+		}
+
+	}
+
+}

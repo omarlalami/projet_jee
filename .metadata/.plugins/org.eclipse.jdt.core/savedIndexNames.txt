@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+\\salsa.univ-amu.fr\dfs\myhome_etud\DOSSIERS_WINDOWS\Bureau\projet_jee\.metadata\.plugins\org.eclipse.jdt.core
+237838805.index
+2821701220.index
