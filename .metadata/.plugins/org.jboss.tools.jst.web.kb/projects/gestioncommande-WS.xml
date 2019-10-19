@@ -129,6 +129,7 @@
   <core validator-id="jsf-verification"/>
   <core validator-id="jboss.cdi.core">
    <linked-resource name="%1;" path="%0"/>
+   <linked-resource name="%1;" path="%2"/>
   </core>
   <core validator-id="batch-verification"/>
   <el/>
@@ -137,7 +138,9 @@
   <alias
    path="/gestioncommande-WS/src/miage/gestioncommande/ws/ProduitWSService.java" value="%1"/>
   <alias
-   path="/gestioncommande-api/src/miage/gestioncommande/api/CatalogueService.java" value="%0"/>
+   path="/gestioncommande-api/src/miage/gestioncommande/api/CatalogueService.java" value="%2"/>
+  <alias
+   path="/gestioncommande-M/src/miage/gestioncommande/coreM/CatalogueServiceM.java" value="%0"/>
  </aliases>
  <includes/>
  <uris/>

@@ -1,0 +1,46 @@
+package miage.gestioncommande.ws;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import miage.gestioncommande.api.CatalogueService;
+
+
+@Stateless
+@Path("/produit")
+public class ProduitWSService {
+	
+	// a mettre en commentaire le inject pour le moment...
+	@Inject
+	private CatalogueService cg; 
+	
+	@GET
+	@Path("/list")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listerProduits() {
+		return Response.ok(cg.afficherCatalogue()).build();
+	}
+	
+
+	@GET
+	@Path("/ajoute")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response ajouterProduit(Produit p) {
+		return Response.ok(cg.ajouterProduit(p)).build();
+	}
+
+
+
+
+
+
+
+
+
+
+}
