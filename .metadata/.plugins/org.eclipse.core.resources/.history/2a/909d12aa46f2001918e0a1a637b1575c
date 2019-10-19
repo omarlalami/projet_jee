@@ -1,0 +1,5 @@
+package miage.gestioncommande.ws;
+
+public class CommandeServiceWS {
+
+}

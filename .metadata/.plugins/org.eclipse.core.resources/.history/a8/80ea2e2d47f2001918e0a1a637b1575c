@@ -1,0 +1,7 @@
+package miage.gestioncommande.ws;
+
+@Stateless
+@Path("/commandeservice")
+public class CommandeServiceWS {
+
+}

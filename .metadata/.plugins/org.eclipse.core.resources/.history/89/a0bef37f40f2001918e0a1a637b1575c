@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="tp2">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="gestioncommande-api.jar" deploy-path="/lib" handle="module:/resource/gestioncommande-api/gestioncommande-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestioncommande-WS.war" deploy-path="/" handle="module:/resource/gestioncommande-WS/gestioncommande-WS">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestioncommande-M.jar" deploy-path="/" handle="module:/resource/gestioncommande-M/gestioncommande-M">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
