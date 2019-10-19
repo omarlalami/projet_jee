@@ -12,7 +12,7 @@ public class RecuperationEJB {
 		ServiceLocator monServiceLocateur = ServiceLocatorImpl.getInstance();
 		
 		try {
-			Object monEjb = monServiceLocateur.getRemoteInterface("ejb:tp1/gestioncabinet-coreDB/ConsultationDBService!miage.gestioncabinet.api.ConsultationRemoteService?stateful") ;
+			Object monEjb = monServiceLocateur.getRemoteInterface("ejb:tp1/gestioncabinet-coreDB/ConsultationDBService?stateful!miage.gestioncabinet.api.ConsultationRemoteService?stateful") ;
 		} catch (ServiceLocatorException e) {
 			System.out.println("OMAR ERREUR : lors de la recuperation de l'EJB ...");
 			e.printStackTrace();

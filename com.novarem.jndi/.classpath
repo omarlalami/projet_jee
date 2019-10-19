@@ -7,5 +7,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/l16024220/Downloads/jee-tp1/JAR &amp; WAR/gestioncabinet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
