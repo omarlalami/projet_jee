@@ -4,20 +4,30 @@ package miage.gestioncommande.coreDB;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import miage.gestioncommande.api.Prix;
 import miage.gestioncommande.api.Produit;
 
-@XmlRootElement
+@Entity
+@Table
 public class ProduitM implements Produit {
 
+	@Id
+	@Column(name="c_id")
 	private Long id;
 	
+	@Column(name="c_label")
 	private String designation;
 	
 	@XmlElement(type=PrixM.class)
+	@OneToMany(targetEntity=PrixM.class)
 	private List<Prix> prix;
 
 	/* (non-Javadoc)
