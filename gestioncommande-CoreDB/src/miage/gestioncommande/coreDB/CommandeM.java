@@ -10,13 +10,18 @@ import miage.gestioncommande.api.Commande;
 import miage.gestioncommande.api.LigneCommande;
 import miage.gestioncommande.api.Produit;
 import miage.gestioncommande.api.Responsable;
-
+@Entity
+@Table(name="t_commande")
 public class CommandeM implements Commande {
 
+	@Id
+	@Column(name="c_id")
 	private Long id;
 	
+	@Column(name="c_datecommande")
 	private Calendar dateCommande;
 	
+	@Column(name="c_datelivraison")
 	private Calendar dateLivraison;
 	
 	private Client client;

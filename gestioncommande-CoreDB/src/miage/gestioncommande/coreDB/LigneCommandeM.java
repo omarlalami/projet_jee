@@ -4,13 +4,15 @@ package miage.gestioncommande.coreDB;
 import miage.gestioncommande.api.Commande;
 import miage.gestioncommande.api.LigneCommande;
 import miage.gestioncommande.api.Produit;
-
+@Entity
+@Table(name="t_ligne_commande")
 public class LigneCommandeM implements LigneCommande {
 	
 	private Produit produit;
 	
 	private Commande commande;
 	
+	@Column(name="c_quantite")
 	private int quantite;
 	
 	private double montant;

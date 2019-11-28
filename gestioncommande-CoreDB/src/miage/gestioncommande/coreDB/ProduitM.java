@@ -16,7 +16,7 @@ import miage.gestioncommande.api.Prix;
 import miage.gestioncommande.api.Produit;
 
 @Entity
-@Table
+@Table(name="t_produit")
 public class ProduitM implements Produit {
 
 	@Id
@@ -28,6 +28,7 @@ public class ProduitM implements Produit {
 	
 	@XmlElement(type=PrixM.class)
 	@OneToMany(targetEntity=PrixM.class)
+	@JoinColumn("c_produit")
 	private List<Prix> prix;
 
 	/* (non-Javadoc)

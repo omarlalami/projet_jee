@@ -2,17 +2,24 @@ package miage.gestioncommande.coreDB;
 
 
 import miage.gestioncommande.api.Utilisateur;
-
+@Entity
+@Table(name="t_utilisateur")
 public abstract class UtilisateurM implements Utilisateur {
 
+	@Id
+	@Column(name="c_id")
 	private Long id;
 	
+	@Column(name="c_nom")
 	private String nom;
 	
+	@Column(name="c_prenom")
 	private String prenom;
 	
+	@Column(name="c_login")
 	private String login;
 	
+	@Column(name="c_mdp")
 	private String mdp;
 
 	/* (non-Javadoc)

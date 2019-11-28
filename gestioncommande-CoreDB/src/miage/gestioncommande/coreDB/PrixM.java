@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import miage.gestioncommande.api.Prix;
 import miage.gestioncommande.api.Produit;
 @Entity
-@Table
+@Table(name="t_prix")
 public class PrixM implements Prix {
 	
 	@Id
@@ -23,7 +23,6 @@ public class PrixM implements Prix {
 
 	@Column(name="c_date_prix")
 	private Calendar dateprix;
-	
 
 	/* (non-Javadoc)
 	 * @see miage.gestioncommande.coreM.Prix#getId()
