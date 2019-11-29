@@ -4,16 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Local;
+import javax.ejb.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import miage.gestioncommande.api.CatalogueService;
 import miage.gestioncommande.api.Prix;
 import miage.gestioncommande.api.Produit;
 
+
+@Singleton
+@Local(CatalogueService.class)
 public class CatalogueServiceDB implements CatalogueService{
 
 	
-	private List<Produit> listeProduit;
+	@PersistenceContext(unitName="gestioncabinet")
+	private EntityManager em;
 
+
+	private List<Produit> listeProduit;
 	
 	@PostConstruct
 	public void initialiser() {
@@ -24,14 +35,13 @@ public class CatalogueServiceDB implements CatalogueService{
 	
 	@Override
 	public List<? extends Produit> afficherCatalogue() {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = em.createNamedQuery("getAllProduit");
+		return q.getResultList();
 	}
 
 	@Override
 	public void ajouterProduit(Produit p) {
-		// TODO Auto-generated method stub
-		
+		em.merge(p);		
 	}
 
 	@Override

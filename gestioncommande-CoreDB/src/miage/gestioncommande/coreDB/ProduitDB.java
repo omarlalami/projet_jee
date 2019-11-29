@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,8 +16,10 @@ import javax.xml.bind.annotation.XmlElement;
 import miage.gestioncommande.api.Prix;
 import miage.gestioncommande.api.Produit;
 
+
 @Entity
 @Table(name="t_produit")
+@NamedQuery(name="getAllProduit",query="SELECT p FROM ProduitDB p")
 public class ProduitDB implements Produit {
 
 	@Id
