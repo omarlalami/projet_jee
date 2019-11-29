@@ -9,10 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import miage.gestioncommande.api.Prix;
-import miage.gestioncommande.api.Produit;
 @Entity
 @Table(name="t_prix")
-public class PrixM implements Prix {
+public class PrixDB implements Prix {
 	
 	@Id
 	@Column(name="c_id")

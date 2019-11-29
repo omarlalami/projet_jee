@@ -3,7 +3,7 @@ package miage.gestioncommande.coreDB;
 
 import miage.gestioncommande.api.Adresse;
 
-public class AdresseM implements Adresse {
+public class AdresseDB implements Adresse {
 
 	private String ligne1;
 	

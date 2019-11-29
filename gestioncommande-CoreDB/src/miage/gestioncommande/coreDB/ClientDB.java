@@ -7,7 +7,7 @@ import miage.gestioncommande.api.Adresse;
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Responsable;
 
-public class ClientM extends UtilisateurM implements Client {
+public class ClientDB extends UtilisateurDB implements Client {
 
 	private String genre;
 	

@@ -1,10 +1,13 @@
 package miage.gestioncommande.coreDB;
 
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import miage.gestioncommande.api.Utilisateur;
 @Entity
 @Table(name="t_utilisateur")
-public abstract class UtilisateurM implements Utilisateur {
+public abstract class UtilisateurDB implements Utilisateur {
 
 	@Id
 	@Column(name="c_id")

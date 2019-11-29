@@ -3,7 +3,7 @@ package miage.gestioncommande.coreDB;
 
 import miage.gestioncommande.api.Responsable;
 
-public class ResponsableM extends UtilisateurM implements Responsable{
+public class ResponsableDB extends UtilisateurDB implements Responsable{
 
 	private String numEmployee;
 

@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Commande;
 import miage.gestioncommande.api.LigneCommande;
-import miage.gestioncommande.api.Produit;
 import miage.gestioncommande.api.Responsable;
 @Entity
 @Table(name="t_commande")
-public class CommandeM implements Commande {
+public class CommandeDB implements Commande {
 
 	@Id
 	@Column(name="c_id")
@@ -28,7 +32,7 @@ public class CommandeM implements Commande {
 	
 	private Responsable responsable;
 	
-	private List<LigneCommandeM> ligneCommandes;
+	private List<LigneCommandeDB> ligneCommandes;
 
 	/* (non-Javadoc)
 	 * @see miage.gestioncommande.coreM.Commande#getId()
@@ -115,7 +119,7 @@ public class CommandeM implements Commande {
 	 */
 	@Override
 	public List<? extends LigneCommande> getLigneCommandes() {
-		if(ligneCommandes == null) ligneCommandes = new ArrayList<LigneCommandeM>();
+		if(ligneCommandes == null) ligneCommandes = new ArrayList<LigneCommandeDB>();
 		return ligneCommandes;
 	}
 
@@ -124,7 +128,7 @@ public class CommandeM implements Commande {
 	 */
 	@Override
 	public void setLigneCommandes(List<? extends LigneCommande> ligneCommandes) {
-		this.ligneCommandes = (List<LigneCommandeM>) ligneCommandes;
+		this.ligneCommandes = (List<LigneCommandeDB>) ligneCommandes;
 	}
 	
 }
