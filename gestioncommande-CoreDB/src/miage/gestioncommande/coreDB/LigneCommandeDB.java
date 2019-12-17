@@ -14,6 +14,8 @@ import miage.gestioncommande.api.Produit;
 @Table(name="t_ligne_commande")
 public class LigneCommandeDB implements LigneCommande {
 	
+	// a verifier les nom de colonne c_quantite
+	// pk on fait MapsId pour idProduit ??
 
 	@EmbeddedId
 	private LigneCommandeDBId ligneCommandeDBId;

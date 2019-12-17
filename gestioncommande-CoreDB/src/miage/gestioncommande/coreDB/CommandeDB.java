@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
 
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Commande;
@@ -16,6 +17,7 @@ import miage.gestioncommande.api.LigneCommande;
 import miage.gestioncommande.api.Responsable;
 @Entity
 @Table(name="t_commande")
+@NamedQuery(name="getAllCommande",query="SELECT c FROM CommandeDB c")
 public class CommandeDB implements Commande {
 
 	@Id
@@ -28,11 +30,20 @@ public class CommandeDB implements Commande {
 	@Column(name="c_datelivraison")
 	private Calendar dateLivraison;
 	
+	@XmlElement(type=ClientDB.class)
+	@ManyToOne(targetEntity=ClientDB.class)
+	@JoinColumn(name="")
 	private Client client;
 	
+	@XmlElement(type=ResponsableDB.class)
+	@ManyToOne(targetEntity=ResponsableDB.class)
+	@JoinColumn(name="")
 	private Responsable responsable;
 	
-	private List<LigneCommandeDB> ligneCommandes;
+	@XmlElement(type=LigneCommandeDB.class)
+	@OneToMany(targetEntity=LigneCommandeDB.class)
+	@JoinColumn(name="")	
+	private List<LigneCommande> ligneCommandes;
 
 	/* (non-Javadoc)
 	 * @see miage.gestioncommande.coreM.Commande#getId()

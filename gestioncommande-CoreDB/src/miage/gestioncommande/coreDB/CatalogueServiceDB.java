@@ -29,7 +29,7 @@ public class CatalogueServiceDB implements CatalogueService{
 	@PostConstruct
 	public void initialiser() {
 		listeProduit = new ArrayList<Produit>();
-
+		
 	}
 	
 	
@@ -52,20 +52,20 @@ public class CatalogueServiceDB implements CatalogueService{
 
 	@Override
 	public Produit rechercherProduit(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(ProduitDB.class,id);
 	}
 
 	@Override
 	public void supprimerProduit(Long id) {
-		// TODO Auto-generated method stub
+		Produit produit_rechercher = em.find(ProduitDB.class,id);
+		if (produit_rechercher !=null)
+			em.remove(produit_rechercher);
 		
 	}
 
 	@Override
 	public Prix recupererPrix(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Prix)p.getPrix();
 	}
 
 }

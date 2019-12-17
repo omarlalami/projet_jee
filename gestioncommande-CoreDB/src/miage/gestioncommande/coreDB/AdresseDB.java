@@ -2,15 +2,24 @@ package miage.gestioncommande.coreDB;
 
 
 import miage.gestioncommande.api.Adresse;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="")
 public class AdresseDB implements Adresse {
 
+	@Column(name="c_adresse_ligne1")
 	private String ligne1;
 	
+	@Column(name="c_adresse_ligne2")
 	private String ligne2;
 	
+	@Column(name="c_adresse_ville")
 	private String ville;
 	
+	@Column(name="c_adresse_cp")
 	private String codePostal;
 
 	/* (non-Javadoc)

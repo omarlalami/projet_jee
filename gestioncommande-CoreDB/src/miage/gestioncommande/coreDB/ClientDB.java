@@ -3,18 +3,35 @@ package miage.gestioncommande.coreDB;
 
 import java.util.Calendar;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.NamedQuery;
+
 import miage.gestioncommande.api.Adresse;
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Responsable;
 
+@Entity
+@Table(name="")
+@NamedQuery(name="getAllClient",query="SELECT c FROM ClientDB c")
 public class ClientDB extends UtilisateurDB implements Client {
 
+	@Column(name="c_genre")
 	private String genre;
 	
+	@Column(name="c_datenaiss")
 	private Calendar dateNaiss;
 	
+	@XmlElement(type=AdresseDB.class)
+	@ManyToOne(targetEntity=AdresseDB.class)
+	@JoinColumn(name="")
 	private Adresse adresse;
-	
+
+	@XmlElement(type=ResponsableDB.class)
+	@ManyToOne(targetEntity=ResponsableDB.class)
+	@JoinColumn(name="")
 	private Responsable responsable;
 
 	/* (non-Javadoc)
