@@ -3,11 +3,9 @@ package miage.gestioncommande.coreDB;
 
 import miage.gestioncommande.api.Adresse;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
-@Entity
-@Table(name="")
+@Embeddable
 public class AdresseDB implements Adresse {
 
 	@Column(name="c_adresse_ligne1")

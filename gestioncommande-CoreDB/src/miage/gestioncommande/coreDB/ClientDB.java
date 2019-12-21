@@ -5,7 +5,11 @@ import java.util.Calendar;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.NamedQuery;
 
@@ -13,8 +17,7 @@ import miage.gestioncommande.api.Adresse;
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Responsable;
 
-@Entity
-@Table(name="")
+@Embeddable
 @NamedQuery(name="getAllClient",query="SELECT c FROM ClientDB c")
 public class ClientDB extends UtilisateurDB implements Client {
 
@@ -25,14 +28,12 @@ public class ClientDB extends UtilisateurDB implements Client {
 	private Calendar dateNaiss;
 	
 	@XmlElement(type=AdresseDB.class)
-	@ManyToOne(targetEntity=AdresseDB.class)
-	@JoinColumn(name="")
-	private Adresse adresse;
+	@Embedded
+	private AdresseDB adresse;
 
 	@XmlElement(type=ResponsableDB.class)
-	@ManyToOne(targetEntity=ResponsableDB.class)
-	@JoinColumn(name="")
-	private Responsable responsable;
+	@Embedded
+	private ResponsableDB responsable;
 
 	/* (non-Javadoc)
 	 * @see miage.gestioncommande.coreM.Client#getGenre()
@@ -79,7 +80,7 @@ public class ClientDB extends UtilisateurDB implements Client {
 	 */
 	@Override
 	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
+		this.adresse = (AdresseDB) adresse;
 	}
 
 	/* (non-Javadoc)
@@ -95,7 +96,7 @@ public class ClientDB extends UtilisateurDB implements Client {
 	 */
 	@Override
 	public void setResponsable(Responsable responsable) {
-		this.responsable = responsable;
+		this.responsable = (ResponsableDB) responsable;
 	}
 	
 }

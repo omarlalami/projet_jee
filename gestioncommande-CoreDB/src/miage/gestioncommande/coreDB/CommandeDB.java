@@ -6,8 +6,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -31,19 +36,17 @@ public class CommandeDB implements Commande {
 	private Calendar dateLivraison;
 	
 	@XmlElement(type=ClientDB.class)
-	@ManyToOne(targetEntity=ClientDB.class)
-	@JoinColumn(name="")
-	private Client client;
+	@Embedded
+	private ClientDB client;
 	
 	@XmlElement(type=ResponsableDB.class)
-	@ManyToOne(targetEntity=ResponsableDB.class)
-	@JoinColumn(name="")
-	private Responsable responsable;
+	@Embedded
+	private ResponsableDB responsable;
 	
 	@XmlElement(type=LigneCommandeDB.class)
 	@OneToMany(targetEntity=LigneCommandeDB.class)
 	@JoinColumn(name="")	
-	private List<LigneCommande> ligneCommandes;
+	private List<LigneCommandeDB> ligneCommandes;
 
 	/* (non-Javadoc)
 	 * @see miage.gestioncommande.coreM.Commande#getId()
@@ -106,7 +109,7 @@ public class CommandeDB implements Commande {
 	 */
 	@Override
 	public void setClient(Client client) {
-		this.client = client;
+		this.client = (ClientDB) client;
 	}
 
 	/* (non-Javadoc)
@@ -122,7 +125,7 @@ public class CommandeDB implements Commande {
 	 */
 	@Override
 	public void setResponsable(Responsable responsable) {
-		this.responsable = responsable;
+		this.responsable = (ResponsableDB) responsable;
 	}
 
 	/* (non-Javadoc)

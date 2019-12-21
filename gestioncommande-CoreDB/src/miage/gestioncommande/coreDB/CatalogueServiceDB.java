@@ -41,7 +41,7 @@ public class CatalogueServiceDB implements CatalogueService{
 
 	@Override
 	public void ajouterProduit(Produit p) {
-		em.merge(p);		
+		em.persist(p);		
 	}
 
 	@Override
@@ -65,6 +65,7 @@ public class CatalogueServiceDB implements CatalogueService{
 
 	@Override
 	public Prix recupererPrix(Produit p) {
+		//a corriger faut dabord recuperer/charger le produit car on est en lazy mode
 		return (Prix)p.getPrix();
 	}
 

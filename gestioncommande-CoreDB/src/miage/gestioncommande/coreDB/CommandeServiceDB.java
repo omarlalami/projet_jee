@@ -10,8 +10,12 @@ import miage.gestioncommande.api.CommandeService;
 import miage.gestioncommande.api.Produit;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Local;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 
 @Singleton
 @Local(CommandeService.class)

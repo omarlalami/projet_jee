@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Local;
+import javax.ejb.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Responsable;
 import miage.gestioncommande.api.UtilisateurService;
+import javax.persistence.Query;
 
 @Singleton
 @Local(UtilisateurService.class)
@@ -37,7 +42,7 @@ public class UtilisateurServiceDB implements UtilisateurService{
 	}
 
 	public void creerClient(Client c) {
-		em.merge(c);		
+		em.persist(c);		
 		
 	}
 

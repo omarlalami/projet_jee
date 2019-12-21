@@ -1,5 +1,7 @@
 package miage.gestioncommande.coreDB;
 
+import java.beans.Transient;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -33,7 +35,8 @@ public class LigneCommandeDB implements LigneCommande {
 	@Column(name="c_quantite")
 	private int quantite;
 	
-	private double montant;
+	//annoter avec transient pour dire que cest en class pas en base
+	//private double montant;
 	
 	
 	
@@ -67,24 +70,20 @@ public class LigneCommandeDB implements LigneCommande {
 		this.quantite = quantite;
 	}
 
+	@Transient
 	@Override
 	public double getMontant() {
-		return montant;
+		return getQuantite()*(getProduit().getPrix().get(0).getPrix());
 	}
-
+	
+	@Transient
 	@Override
 	public void setMontant(double montant) {
-		this.montant = montant;
 	}
 	
 	
 
 
-	
-	
-	
-	
-	
 	
 	
 	
