@@ -5,10 +5,10 @@ import java.beans.Transient;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+
 import miage.gestioncommande.api.Commande;
 import miage.gestioncommande.api.LigneCommande;
 import miage.gestioncommande.api.Produit;

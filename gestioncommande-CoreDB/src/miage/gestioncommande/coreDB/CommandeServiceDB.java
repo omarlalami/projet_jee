@@ -3,18 +3,17 @@ package miage.gestioncommande.coreDB;
 import java.util.ArrayList;
 import java.util.List;
 
-import miage.gestioncommande.api.CatalogueService;
-import miage.gestioncommande.api.Client;
-import miage.gestioncommande.api.Commande;
-import miage.gestioncommande.api.CommandeService;
-import miage.gestioncommande.api.Produit;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import miage.gestioncommande.api.Client;
+import miage.gestioncommande.api.Commande;
+import miage.gestioncommande.api.CommandeService;
+import miage.gestioncommande.api.Produit;
 
 
 @Singleton

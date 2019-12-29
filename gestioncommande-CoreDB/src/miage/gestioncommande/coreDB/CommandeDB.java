@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -36,11 +35,11 @@ public class CommandeDB implements Commande {
 	private Calendar dateLivraison;
 	
 	@XmlElement(type=ClientDB.class)
-	@Embedded
+	@ManyToOne(targetEntity=ClientDB.class)
 	private ClientDB client;
 	
 	@XmlElement(type=ResponsableDB.class)
-	@Embedded
+	@ManyToOne(targetEntity=ResponsableDB.class)
 	private ResponsableDB responsable;
 	
 	@XmlElement(type=LigneCommandeDB.class)

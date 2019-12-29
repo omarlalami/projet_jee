@@ -1,11 +1,10 @@
 package miage.gestioncommande.coreDB;
 
 
-import miage.gestioncommande.api.Adresse;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+
+import miage.gestioncommande.api.Adresse;
 
 @Entity
 public class AdresseDB extends UtilisateurDB implements Adresse {

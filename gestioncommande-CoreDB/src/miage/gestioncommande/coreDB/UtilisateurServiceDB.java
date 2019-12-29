@@ -8,11 +8,11 @@ import javax.ejb.Local;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import miage.gestioncommande.api.Client;
 import miage.gestioncommande.api.Responsable;
 import miage.gestioncommande.api.UtilisateurService;
-import javax.persistence.Query;
 
 @Singleton
 @Local(UtilisateurService.class)
