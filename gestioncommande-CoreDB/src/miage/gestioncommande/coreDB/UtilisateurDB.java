@@ -1,14 +1,16 @@
 package miage.gestioncommande.coreDB;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-
 import miage.gestioncommande.api.Utilisateur;
+
 @Entity
 @Table(name="t_utilisateur")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class UtilisateurDB implements Utilisateur {
 
 	@Id
@@ -26,15 +28,6 @@ public abstract class UtilisateurDB implements Utilisateur {
 	
 	@Column(name="c_mdp")
 	private String mdp;
-
-	@Embedded
-	private AdresseDB adresse;
-	
-	@Embedded
-	private ClientDB client;
-	
-	@Embedded
-	private ResponsableDB responsable;
 	
 	/* (non-Javadoc)
 	 * @see miage.gestioncommande.coreM.Utilisateur#getId()

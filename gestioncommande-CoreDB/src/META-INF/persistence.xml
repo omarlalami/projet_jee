@@ -12,6 +12,9 @@
 	    <class>miage.gestioncommande.coreDB.LigneCommandeDB</class>		
 	    <class>miage.gestioncommande.coreDB.UtilisateurDB</class>
 	    <class>miage.gestioncommande.coreDB.LigneCommandeDBId</class>
+	    <class>miage.gestioncommande.coreDB.ResponsableDB</class>
+	    <class>miage.gestioncommande.coreDB.ClientDB</class>
+	    <class>miage.gestioncommande.coreDB.AdresseDB</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

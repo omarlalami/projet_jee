@@ -3,12 +3,13 @@ package miage.gestioncommande.coreDB;
 
 import miage.gestioncommande.api.Responsable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Embeddable
+@Entity
 @NamedQuery(name="getAllResponsable",query="SELECT r FROM ResponsableDB r")
 public class ResponsableDB extends UtilisateurDB implements Responsable{
 
