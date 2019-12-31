@@ -47,7 +47,7 @@ public class UtilisateurServiceDB implements UtilisateurService{
 	}
 
 	public void creerResponsable(Responsable r) {
-		em.merge(r);		
+		em.persist(r);		
 		
 	}
 	

@@ -57,16 +57,21 @@ public class CatalogueServiceDB implements CatalogueService{
 
 	@Override
 	public void supprimerProduit(Long id) {
+		// on verifie que ce id correspond a un produit
 		Produit produit_rechercher = em.find(ProduitDB.class,id);
-		if (produit_rechercher !=null)
-			em.remove(produit_rechercher);
+		
+		// si il existe un produit avec cet id alors on merge avant de supprimer pour etre sur que le produit est géré
+		if (produit_rechercher !=null) {
+			Produit p_manager = this.em.merge(produit_rechercher);
+			this.em.remove(p_manager);
+		}
 		
 	}
 
 	@Override
 	public Prix recupererPrix(Produit p) {
-		//a corriger faut dabord recuperer/charger le produit car on est en lazy mode
-		return (Prix)p.getPrix();
+		Produit p_manager = em.merge(p);
+		return (Prix)p_manager.getPrix();
 	}
 
 }

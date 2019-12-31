@@ -1,6 +1,7 @@
 package miage.gestioncommande.coreDB;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -38,43 +39,101 @@ public class CommandeServiceDB implements CommandeService{
 	}
 
 	public void livrerCommande(Commande c) {
-		// TODO Auto-generated method stub
+
+		Commande c_charger = em.merge(c);
 		
+		if (listeCommande.contains(c_charger)) {
+			listeCommande.remove(c_charger);
+			c_charger.setDateLivraison(Calendar.getInstance());
+			listeCommande.add(c_charger);
+		}		
 	}
 
 	public Commande creerCommande(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+		Commande com = new CommandeDB();
+		com.setId((long) listeCommande.size());
+		com.setDateCommande(Calendar.getInstance());
+		com.setClient(c);		
+		em.persist(com);
+		return com;
 	}
 
 	public void selectionnerCommande(Commande c) {
-		// TODO Auto-generated method stub
+
+		commandeSelectionner = em.merge(c);
 		
 	}
 
 	public void ajouterProduit(Produit p) {
-		// TODO Auto-generated method stub
+
+		ArrayList <LigneCommandeDB> ligneCommandes = (ArrayList<LigneCommandeDB>) commandeSelectionner.getLigneCommandes();
+
+		
+		Produit p_manager = em.merge(p);
+		
+		LigneCommandeDB lc = new LigneCommandeDB();
+		lc.setCommande(commandeSelectionner);
+		lc.setProduit(p);
+		lc.setQuantite(1);
+		lc.setMontant(p.getPrix().get(0).getPrix());
+		
+		ligneCommandes.add(lc);
+		commandeSelectionner.setLigneCommandes(ligneCommandes);
+		
+		commandeSelectionner = em.merge(commandeSelectionner);
+
 		
 	}
 
 	public void supprimerProduit(Produit p) {
-		// TODO Auto-generated method stub
+
+		Produit p_manager = em.merge(p);
+
+		commandeSelectionner = em.merge(commandeSelectionner);
+		
+		if (commandeSelectionner != null ){
+			ArrayList <LigneCommandeDB> ligneCommandes = (ArrayList<LigneCommandeDB>) commandeSelectionner.getLigneCommandes();
+			for( LigneCommandeDB ligneCommande : ligneCommandes){
+				if ( (ligneCommande.getProduit()).equals(p_manager) )
+				ligneCommandes.remove(ligneCommande);
+			}
+		}
+		
 		
 	}
 
 	public void sauvegarderCommande() {
-		// TODO Auto-generated method stub
-		
+		if (commandeSelectionner != null) {
+			commandeSelectionner = em.merge(commandeSelectionner);
+			listeCommande = em.merge(listeCommande);
+			listeCommande.add(commandeSelectionner);
+		}
 	}
 
 	public List listerProduit() {
-		// TODO Auto-generated method stub
-		return null;
+		commandeSelectionner = em.merge(commandeSelectionner);
+
+		
+		ArrayList <LigneCommandeDB> ligneCommandes = (ArrayList<LigneCommandeDB>) commandeSelectionner.getLigneCommandes();
+		ArrayList listeProduits = new ArrayList();
+		for( LigneCommandeDB ligneCommande : ligneCommandes){
+			listeProduits.add(ligneCommande.getProduit());
+		}
+		return listeProduits;
+	
+	
 	}
 
 	public List listerCommandes(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+		Client c_manager = em.merge(c);
+		listeCommande = em.merge(listeCommande);
+		
+		ArrayList <Commande> commandesClient = new ArrayList();
+		for ( Commande commande : listeCommande )
+			if ( (commande.getClient()).equals(c) )
+				commandesClient.add(commande);
+		return commandesClient;
+		
 	}
 
 }
