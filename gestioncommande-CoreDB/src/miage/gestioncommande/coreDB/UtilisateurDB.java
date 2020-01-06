@@ -1,6 +1,7 @@
 package miage.gestioncommande.coreDB;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -12,6 +13,7 @@ import miage.gestioncommande.api.Utilisateur;
 @Entity
 @Table(name="t_utilisateur")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="c_discriminator")
 public abstract class UtilisateurDB implements Utilisateur {
 
 	@Id

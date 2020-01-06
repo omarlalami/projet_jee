@@ -9,9 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -36,15 +37,22 @@ public class CommandeDB implements Commande {
 	
 	@XmlElement(type=ClientDB.class)
 	@ManyToOne(targetEntity=ClientDB.class)
+	@JoinColumn(name="fk_commande_client")
 	private ClientDB client;
 	
 	@XmlElement(type=ResponsableDB.class)
 	@ManyToOne(targetEntity=ResponsableDB.class)
+	@JoinColumn(name="fk_commande_responsable")
 	private ResponsableDB responsable;
 	
+	// TODO : a voir si c'est pas OneToMany
 	@XmlElement(type=LigneCommandeDB.class)
-	@OneToMany(targetEntity=LigneCommandeDB.class)
-	@JoinColumn(name="")	
+	@ManyToMany(targetEntity=LigneCommandeDB.class)
+	@JoinTable(
+			name="t_ligne_commande",
+			joinColumns=@JoinColumn(name="fk_commande_ligne_produit"),
+			inverseJoinColumns=@JoinColumn(name="fk_ligne_commande_produit")
+	)	
 	private List<LigneCommandeDB> ligneCommandes;
 
 	/* (non-Javadoc)

@@ -31,7 +31,7 @@ public class ProduitDB implements Produit {
 	
 	@XmlElement(type=PrixDB.class)
 	@OneToMany(targetEntity=PrixDB.class)
-	@JoinColumn(name="c_produit")
+	@JoinColumn(name="fk_prix_produit")
 	private List<Prix> prix;
 
 	/* (non-Javadoc)

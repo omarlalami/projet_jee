@@ -1,6 +1,5 @@
 package miage.gestioncommande.coreDB;
 
-import java.beans.Transient;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -8,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import miage.gestioncommande.api.Commande;
 import miage.gestioncommande.api.LigneCommande;
@@ -16,12 +16,8 @@ import miage.gestioncommande.api.Produit;
 @Table(name="t_ligne_commande")
 public class LigneCommandeDB implements LigneCommande {
 	
-	// a verifier les nom de colonne c_quantite
-	// pk on fait MapsId pour idProduit ??
-
 	@EmbeddedId
 	private LigneCommandeDBId ligneCommandeDBId;
-	
 
 	@ManyToOne
 	@MapsId("idCommande")
@@ -30,15 +26,13 @@ public class LigneCommandeDB implements LigneCommande {
 	@ManyToOne
 	@MapsId("idProduit")
 	private ProduitDB produit;
-	
 
 	@Column(name="c_quantite")
 	private int quantite;
 	
 	//annoter avec transient pour dire que cest en class pas en base
-	//private double montant;
-	
-	
+	@Transient
+	private double montant;
 	
 	public CommandeDB getCommande() {
 		return commande;

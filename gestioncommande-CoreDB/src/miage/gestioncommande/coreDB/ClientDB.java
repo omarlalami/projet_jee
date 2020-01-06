@@ -4,7 +4,11 @@ package miage.gestioncommande.coreDB;
 import java.util.Calendar;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -14,6 +18,7 @@ import miage.gestioncommande.api.Responsable;
 
 @Entity
 @NamedQuery(name="getAllClient",query="SELECT c FROM ClientDB c")
+@DiscriminatorValue("client")
 public class ClientDB extends UtilisateurDB implements Client {
 
 	@Column(name="c_genre")
@@ -23,9 +28,12 @@ public class ClientDB extends UtilisateurDB implements Client {
 	private Calendar dateNaiss;
 	
 	@XmlElement(type=AdresseDB.class)
+	@Embedded
 	private AdresseDB adresse;
 
 	@XmlElement(type=ResponsableDB.class)
+	@ManyToOne(targetEntity=ResponsableDB.class)
+	@JoinColumn(name="fk_client_responsable")
 	private ResponsableDB responsable;
 
 	/* (non-Javadoc)
